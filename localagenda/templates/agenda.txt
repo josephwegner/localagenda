@@ -1,0 +1,7 @@
+Hey!
+
+A new agenda has been posted for the {{ agenda.meeting.name }} meeting in {{ agenda.meeting.city }}. Check it out:
+
+{{ agenda.target }}
+
+Take care!

@@ -1,0 +1,8 @@
+Name: Woodridge
+State: IL
+
+Meetings:
+  - name: Mayor & Board of Trustees
+    parser: link_target
+    matcher: //a[starts-with(text(), "Agenda Packet")]
+    url: http://woodridgevillageil.iqm2.com/Citizens/Default.aspx

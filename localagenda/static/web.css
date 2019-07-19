@@ -1,0 +1,142 @@
+html, body {
+  margin: 0;
+  font-family: 'Public Sans', sans-serif;
+  color: white;
+  font-size: 16px;
+}
+
+/** Home **/
+.main {
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.centered {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.big-text {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+.big-text.alone {
+  margin-bottom: 8rem;
+}
+
+.cta-desc {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+
+.what-it-is {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.city-input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.city-input,
+.email-input {
+  font-size: 1rem;
+  border-radius: .5rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  width: 400px;
+}
+
+.input-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+    height: 100%;
+    border-radius: 0 .5rem .5rem 0;
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+}
+
+#start {
+  background-color: #466D3B;
+}
+
+form {
+  margin-bottom: 0;
+}
+
+/** Show **/
+.meeting-list-wrapper {
+  display: inline-block;
+  text-align: left;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.meeting-list-item {
+  display: block;
+  font-size: 1.5rem;
+}
+
+.meeting-list-item input {
+  vertical-align: middle
+}
+
+#subscribe {
+  background-color: #3C3B6E;
+}
+
+/** Awesomeplete **/
+.awesomplete > ul {
+  min-width: auto;
+  background: white;
+}
+
+.awesomplete > ul > li {
+  text-align: left;
+  color: #666;
+  padding: .5rem 1rem;
+}
+
+/* FONTS */
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/static/webfonts/PublicSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url('/static/webfonts/PublicSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: url('/static/webfonts/PublicSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Public Sans';
+  font-style: italic;
+  font-weight: 800;
+  src: url('/static/webfonts/PublicSans-ExtraBold.ttf') format('truetype');
+}

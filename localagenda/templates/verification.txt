@@ -1,0 +1,7 @@
+Hey!
+
+The first agenda has been received for the {{ agenda.meeting.name }} meeting in {{ agenda.meeting.city }}. Please verify that this link is accurate:
+
+{{ agenda.target }}
+
+Take care!

@@ -1,0 +1,7 @@
+Hey!
+
+You just subscribed for local agenda emails in {{ city['Name'] }}.
+
+Thank you so much for prioritizing this. We'll let you know the next time a new agenda is available.
+
+Take care!

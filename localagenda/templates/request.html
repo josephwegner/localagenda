@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Local Agenda | Get Notified about Local Government Meetings</title>
+    <link rel="stylesheet" type="text/css" href="/static/web.css" />
+  </head>
+  <body style="background-color: #466D3B;">
+    <div class="main">
+      <h1 class="big-text alone">{{ city }} politics are important.</h1>
+      <h3 class="signup-desc">We're still working on setting up agendas for {{city}}.</h3>
+      <div class="city-input-wrapper">
+        <form action="/request" method="POST">
+          <input required name="email" type="email" class="email-input" placeholder="joe@gmail.com" />
+          <input type="hidden" name="city" value="{{ city | escape }}" />
+          <input type="hidden" name="state" value="{{ state | escape }}" />
+          <input type="submit" id="subscribe" class="input-button" value="Request" />
+        </form>
+      </div>
+      <h4>Enter your email so we can let you know when we're ready.</h4>
+    </div>
+    <script type="text/javascript" src="/static/web.js"></script>
+  </body>
+</html>

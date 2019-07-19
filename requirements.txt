@@ -1,0 +1,10 @@
+Scrapy>=1.6,<=2.0
+pyyaml>=5.1,<=6.0
+peewee>=3.9.6,<=4.0
+postgres>=2.2.2
+pw-database-url>=0.2.0
+sendgrid>=6.0.5,<=7.0
+Jinja2>=2.10.1,<=2.11
+peewee-migration=1.1.6
+flask=1.1.1
+gunicorn>=19.9.0,<=20.0

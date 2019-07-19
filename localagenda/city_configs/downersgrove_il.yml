@@ -1,0 +1,8 @@
+Name: Downers Grove
+State: IL
+
+Meetings:
+  - name: Village Council
+    parser: link_target
+    matcher: //a[starts-with(text(), "Council Agenda")]
+    url: http://www.downers.us/agendas/current
