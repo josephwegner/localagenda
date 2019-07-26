@@ -14,7 +14,7 @@ class AgendaPipeline(object):
         for sub in meeting.subscriptions:
             send_to.append(sub.email)
 
-        if len(send_to) == 0 or meeting.agendas < 1:
+        if len(send_to) == 0 or len(meeting.agendas) < 1:
             print("No subscriptions for %s %s" %(meeting.city, meeting.name))
             return
 
