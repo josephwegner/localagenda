@@ -3,6 +3,6 @@ State: IL
 
 Meetings:
   - name: Village Council
-    parser: link_target
-    matcher: //a[starts-with(text(), "Council Agenda")]
+    parser: link_with_text
+    matcher: Council Agenda
     url: http://www.downers.us/agendas/current

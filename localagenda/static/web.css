@@ -19,6 +19,26 @@ html, body {
   transform: translateY(-50%);
 }
 
+.footer {
+  background-color: white;
+  text-align: center;
+  padding: .25rem 0;
+}
+
+.footer.fixed {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: #B22234;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: .75rem;
+}
+
 .big-text {
   font-size: 4rem;
   font-weight: 800;
@@ -98,6 +118,35 @@ form {
 
 #subscribe {
   background-color: #3C3B6E;
+}
+
+/** Privacy **/
+.privacy {
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.privacy a {
+  color: #DDD;
+}
+
+/** Cities **/
+.cities ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  padding: 2rem;
+  flex-direction: column;
+  height: 90%;
+  align-content: start;
+  flex-wrap: wrap;
+}
+
+.cities a,
+.cities a:visited {
+  color: white;
+  margin: .25rem 1rem;
+  display: inline-block;
 }
 
 /** Awesomeplete **/

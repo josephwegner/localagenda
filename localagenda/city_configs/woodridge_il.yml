@@ -3,6 +3,7 @@ State: IL
 
 Meetings:
   - name: Mayor & Board of Trustees
-    parser: link_target
-    matcher: //a[starts-with(text(), "Agenda Packet")]
+    parser: xpath_css
+    matcher:
+      - xpath: //div[text()='Mayor and Board of Trustees - Regular Board Meeting']/parent::div/parent::div/div/div/div/a[starts-with(text(), 'Agenda Packet') and not(@class='HiddenDocumentLink')]
     url: http://woodridgevillageil.iqm2.com/Citizens/Default.aspx

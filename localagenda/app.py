@@ -13,6 +13,14 @@ log = application.logger
 def home():
     return render_template('home.html', cities=cities)
 
+@application.route('/cities')
+def list_cities():
+    return render_template('cities.html', cities=cities)
+
+@application.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
 @application.route('/c', methods=['POST'])
 def lookup_city():
     input = re.sub(r"[^A-Za-z,]", "", request.form['city'].lower())
