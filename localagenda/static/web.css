@@ -121,12 +121,12 @@ form {
 }
 
 /** Privacy **/
-.privacy {
+.privacy, .about {
   max-width: 800px;
   margin: 2rem auto;
 }
 
-.privacy a {
+.privacy a, .about a {
   color: #DDD;
 }
 

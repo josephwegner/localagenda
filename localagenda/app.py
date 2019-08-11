@@ -13,6 +13,10 @@ log = application.logger
 def home():
     return render_template('home.html', cities=cities)
 
+@application.route('/about')
+def about():
+    return render_template('about.html')
+
 @application.route('/cities')
 def list_cities():
     return render_template('cities.html', cities=cities)
