@@ -1,0 +1,10 @@
+Name: Chicago
+State: IL
+
+Meetings:
+  - name: City Council
+    parser: xpath_css
+    matcher:
+      - css: .rgAltRow
+      - xpath: //a[(text() = 'Agenda') and not(@class='meetingAgendaNotAvailbleLink')]
+    url: https://chicago.legistar.com/Calendar.aspx?M=Calendar&ID=7728494&GUID=4457ec0e-2d66-4797-b1e4-4602108900a0&Mode=This%20Year&Title=Office+of+the+City+Clerk+-+Calendar+(This+Year)
