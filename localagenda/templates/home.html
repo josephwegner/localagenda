@@ -7,25 +7,27 @@
   </head>
   <body style="background-color: #3C3B6E;">
     <div class="main centered">
-      <h1 class="big-text">Local politics are important.</h1>
-      <h2 class="cta-desc">Keep up to date with what's being discussed.</h2>
-      <div class="city-input-wrapper">
-        <form action="/c" method="POST">
-          <input required name="city" list="cities" class="city-input awesomplete" placeholder="Boise, Idaho" />
-          <datalist id="cities">
-            {% for city in cities %}
-              <option value="{{ city.Name }}, {{ city.State }}">
-            {% endfor %}
-          </datalist>
-          <input type="submit" id="start" class="input-button" value="Start" />
-        </form>
+      <div>
+        <h1 class="big-text">Local politics are important.</h1>
+        <h2 class="cta-desc">Keep up to date with what's being discussed.</h2>
+        <div class="city-input-wrapper">
+          <form action="/c" method="POST">
+            <input required name="city" list="cities" class="city-input awesomplete" placeholder="Boise, Idaho" />
+            <datalist id="cities">
+              {% for city in cities %}
+                <option value="{{ city.Name }}, {{ city.State }}">
+              {% endfor %}
+            </datalist>
+            <input type="submit" id="start" class="input-button" value="Start" />
+          </form>
+        </div>
+        <h3 class="what-it-is">We'll email you the agenda whenever there's an upcoming meeting.</h3>
       </div>
-      <h3 class="what-it-is">We'll email you the agenda whenever there's an upcoming meeting.</h3>
-    </div>
-    <div class="footer fixed">
-      <a href="/about">About</a>
-      <a href="/cities">Cities</a>
-      <a href="/privacy">Privacy</a>
+      <div class="footer fixed">
+        <a href="/about">About</a>
+        <a href="/cities">Cities</a>
+        <a href="/privacy">Privacy</a>
+      </div>
     </div>
     <script type="text/javascript" src="/static/vendor/awesomplete.min.js"></script>
     <script type="text/javascript">

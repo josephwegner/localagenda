@@ -7,9 +7,18 @@ html, body {
 
 /** Home **/
 .main {
-  padding: 1rem;
   text-align: center;
   box-sizing: border-box;
+}
+
+.main,
+.cities,
+.privacy,
+.about {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .centered {
@@ -23,13 +32,6 @@ html, body {
   background-color: white;
   text-align: center;
   padding: .25rem 0;
-}
-
-.footer.fixed {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
 }
 
 .footer a {
@@ -121,12 +123,18 @@ form {
 }
 
 /** Privacy **/
-.privacy, .about {
+.privacy h1,
+.privacy h2,
+.privacy p,
+.about h1,
+.about h2,
+.about p {
+  padding: 0 2rem;
   max-width: 800px;
-  margin: 2rem auto;
+  margin: 1rem auto;
 }
 
-.privacy a, .about a {
+.privacy p a, .about p a {
   color: #DDD;
 }
 
@@ -142,8 +150,8 @@ form {
   flex-wrap: wrap;
 }
 
-.cities a,
-.cities a:visited {
+.cities ul a,
+.cities ul a:visited {
   color: white;
   margin: .25rem 1rem;
   display: inline-block;

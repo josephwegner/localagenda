@@ -6,15 +6,17 @@
   </head>
   <body style="background-color: #3C3B6E;">
     <div class="main centered">
-      <h2>On behalf of your neighbors and friends in {{ city['Name'] }}</h3>
-      <h1 class="big-text">Thank you.</h1>
-      <h3 class="signup-desc">You're subscriped to {{ len(meetings) }} {{ 'agenda' | pluralize('agendas', len(meetings))}} in {{ city['Name'] }}. We'll send you the next agenda!</h3>
-    </div>
-    <div class="footer fixed">
-      <a href="/">Home</a>
-      <a href="/privacy">About</a>
-      <a href="/cities">Cities</a>
-      <a href="/privacy">Privacy</a>
+        <div>
+        <h2>On behalf of your neighbors and friends in {{ city['Name'] }}</h3>
+        <h1 class="big-text">Thank you.</h1>
+        <h3 class="signup-desc">You're subscriped to {{ len(meetings) }} {{ 'agenda' | pluralize('agendas', len(meetings))}} in {{ city['Name'] }}. We'll send you the next agenda!</h3>
+      </div>
+      <div class="footer fixed">
+        <a href="/">Home</a>
+        <a href="/privacy">About</a>
+        <a href="/cities">Cities</a>
+        <a href="/privacy">Privacy</a>
+      </div>
     </div>
     <script type="text/javascript" src="/static/web.js"></script>
   </body>

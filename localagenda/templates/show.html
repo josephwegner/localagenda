@@ -6,44 +6,46 @@
   </head>
   <body style="background-color: #466D3B;">
     <div class="main">
-      <h1 class="big-text alone">{{ city.Name }} politics are important.</h1>
-      {% if len(city['Meetings']) == 1 %}
-        <h3 class="signup-desc">Enter your email below to get the {{ city['Meetings'][0]['name'] }} agenda</h3>
-        <div class="city-input-wrapper">
+      <div>
+        <h1 class="big-text alone">{{ city.Name }} politics are important.</h1>
+        {% if len(city['Meetings']) == 1 %}
+          <h3 class="signup-desc">Enter your email below to get the {{ city['Meetings'][0]['name'] }} agenda</h3>
+          <div class="city-input-wrapper">
+            <form action="/signup" method="POST">
+              <input type="hidden" name="slug" value="{{ city['slug'] | escape }}" />
+              <input required name="email" type="email" class="email-input" placeholder="joe@gmail.com" />
+              <input name="meetings" type="hidden" value="{{ city['Meetings'][0]['name'] | escape }}" />
+              <input type="submit" id="subscribe" class="input-button" value="Subscribe" />
+            </form>
+          </div>
+          <h4>We'll email whenever there is a new agenda available.</h4>
+        {% else %}
+          <h2 class="signup-desc">Choose which meetings you want to hear about.</h2>
+
           <form action="/signup" method="POST">
             <input type="hidden" name="slug" value="{{ city['slug'] | escape }}" />
-            <input required name="email" type="email" class="email-input" placeholder="joe@gmail.com" />
-            <input name="meetings" type="hidden" value="{{ city['Meetings'][0]['name'] | escape }}" />
-            <input type="submit" id="subscribe" class="input-button" value="Subscribe" />
+            <div class="meeting-list-wrapper">
+              {% for meeting in city['Meetings'] %}
+                  <label class="meeting-list-item">
+                    <input type="checkbox" name="meetings" value="{{ meeting['name'] }}"/> {{ meeting['name'] }}
+                  </label>
+              {% endfor %}
+            </div>
+            <br />
+            <div class="city-input-wrapper">
+                <input required name="email" type="email" class="email-input" placeholder="joe@gmail.com" />
+                <input type="submit" id="subscribe" class="input-button" value="Subscribe" />
+            </div>
           </form>
-        </div>
-        <h4>We'll email whenever there is a new agenda available.</h4>
-      {% else %}
-        <h2 class="signup-desc">Choose which meetings you want to hear about.</h2>
-
-        <form action="/signup" method="POST">
-          <input type="hidden" name="slug" value="{{ city['slug'] | escape }}" />
-          <div class="meeting-list-wrapper">
-            {% for meeting in city['Meetings'] %}
-                <label class="meeting-list-item">
-                  <input type="checkbox" name="meetings" value="{{ meeting['name'] }}"/> {{ meeting['name'] }}
-                </label>
-            {% endfor %}
-          </div>
-          <br />
-          <div class="city-input-wrapper">
-              <input required name="email" type="email" class="email-input" placeholder="joe@gmail.com" />
-              <input type="submit" id="subscribe" class="input-button" value="Subscribe" />
-          </div>
-        </form>
-        <h4>We'll email whenever there is a new agenda available.</h4>
-      {% endif %}
-    </div>
-    <div class="footer fixed">
-      <a href="/">Home</a>
-      <a href="/privacy">About</a>
-      <a href="/cities">Cities</a>
-      <a href="/privacy">Privacy</a>
+          <h4>We'll email whenever there is a new agenda available.</h4>
+        {% endif %}
+      </div>
+      <div class="footer fixed">
+        <a href="/">Home</a>
+        <a href="/privacy">About</a>
+        <a href="/cities">Cities</a>
+        <a href="/privacy">Privacy</a>
+      </div>
     </div>
     <script type="text/javascript" src="/static/web.js"></script>
   </body>
