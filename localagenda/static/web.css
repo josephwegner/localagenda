@@ -161,6 +161,42 @@ form {
   padding: .5rem 1rem;
 }
 
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+    .main.centered {
+      position: relative;
+      transform: none;
+      top: auto;
+    }
+
+    .big-text {
+      font-size: 3rem;
+    }
+
+    .cta-desc {
+      font-size: 1rem;
+    }
+
+    .city-input-wrapper {
+      padding: 0 3rem;
+      box-sizing: border-box;
+    }
+
+    .city-input-wrapper > form {
+      position: relative;
+    }
+
+    .city-input-wrapper,
+    .awesomplete,
+    .awesomplete > input {
+      width: 100%;
+    }
+
+    .email-input {
+      width: 100%;
+    }
+}
+
 /* FONTS */
 @font-face {
   font-family: 'Public Sans';
