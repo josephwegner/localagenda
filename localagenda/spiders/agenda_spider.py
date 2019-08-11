@@ -1,4 +1,5 @@
 import scrapy
+import copy
 from urllib.parse import urljoin
 
 from localagenda.items import AgendaItem
@@ -11,7 +12,7 @@ class LinkSpider(scrapy.Spider):
         for city in cities:
             for meeting in city.get('Meetings'):
                 parser = getattr(self, "%s_parser" %(meeting.get('parser')), self.parse_method_not_found)
-                yield scrapy.Request(meeting.get('url'), meta={
+                yield scrapy.Request(meeting.get('url'), cookies=meeting.get('cookies'), meta={
                     'city': city.get('Name'),
                     'meeting': meeting.get('name'),
                     'matcher': meeting.get('matcher')
@@ -32,18 +33,22 @@ class LinkSpider(scrapy.Spider):
         return item
 
     def xpath_css_parser(self, response):
-        parse_with_matchers(response, response.meta.get('matcher'))
+        doc = self.parse_with_matchers(response, response.meta.get('matcher'))
 
-        href = current_document.attrib['href']
+        if doc == None:
+            return None
+
+        href = doc.attrib['href']
         target = urljoin(response.url, href)
         item = AgendaItem(content=href, target=target, city=response.meta.get('city'), meeting=response.meta.get('meeting'))
         return item
 
-    def parse_with_matchers(doc, matchers):
+    def parse_with_matchers(self, doc, matchers):
         step = matchers.pop(0)
 
         if not doc:
             return None
+
 
         if 'xpath' in step:
             returned_document = doc.xpath(step['xpath'])
@@ -53,5 +58,14 @@ class LinkSpider(scrapy.Spider):
 
         if len(returned_document) == 0:
             return None
+        elif len(matchers) == 0:
+            return returned_document
         else:
-            
+            for doc in returned_document:
+                new_matchers = copy.deepcopy(matchers)
+                traversed = self.parse_with_matchers(doc, new_matchers)
+                if traversed != None:
+                    return traversed
+
+            # If none of the above docs returns anything, just return none
+            return None

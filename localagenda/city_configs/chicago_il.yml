@@ -4,7 +4,15 @@ State: IL
 Meetings:
   - name: City Council
     parser: xpath_css
+    cookies:
+      Setting-106-Calendar Options: info;
+      Setting-106-ASP.calendar_aspx.gridCalendar.SortExpression: MeetingStartDate DESC
+      Setting-106-ASP.departmentdetail_aspx.gridCalendar.SortExpression: MeetingStartDate DESC
+      Setting-106-ASP.departmentdetail_aspx.gridPeople.SortExpression: NameFull ASC
+      Setting-106-Calendar Body: 12357
+      Setting-106-Calendar Year: This Year
+      Setting-106-ASP.meetingdetail_aspx.gridMain.SortExpression: Sequence ASC;
     matcher:
-      - css: .rgAltRow
-      - xpath: //a[(text() = 'Agenda') and not(@class='meetingAgendaNotAvailbleLink')]
-    url: https://chicago.legistar.com/Calendar.aspx?M=Calendar&ID=7728494&GUID=4457ec0e-2d66-4797-b1e4-4602108900a0&Mode=This%20Year&Title=Office+of+the+City+Clerk+-+Calendar+(This+Year)
+      - css: .rgAltRow, .rgRow
+      - xpath: //font[text() = 'Agenda']/parent::a[not(@class='meetingAgendaNotAvailbleLink')]
+    url: https://chicago.legistar.com/Calendar.aspx?M=Calendar&ID=7728494&GUID=4457ec0e-2d66-4797-b1e4-4602108900a0
