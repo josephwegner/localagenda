@@ -32,21 +32,26 @@ class LinkSpider(scrapy.Spider):
         return item
 
     def xpath_css_parser(self, response):
-        current_document = response
-        for step in response.meta.get('matcher'):
-            if not current_document:
-                return None
-
-            if 'xpath' in step:
-                current_document = current_document.xpath(step['xpath'])
-            else:
-                current_document = current_document.css(step['css'])
-
-
-        if len(current_document) == 0:
-            return None
+        parse_with_matchers(response, response.meta.get('matcher'))
 
         href = current_document.attrib['href']
         target = urljoin(response.url, href)
         item = AgendaItem(content=href, target=target, city=response.meta.get('city'), meeting=response.meta.get('meeting'))
         return item
+
+    def parse_with_matchers(doc, matchers):
+        step = matchers.pop(0)
+
+        if not doc:
+            return None
+
+        if 'xpath' in step:
+            returned_document = doc.xpath(step['xpath'])
+        else:
+            returned_document = doc.css(step['css'])
+
+
+        if len(returned_document) == 0:
+            return None
+        else:
+            
