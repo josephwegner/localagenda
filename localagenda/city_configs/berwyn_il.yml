@@ -1,0 +1,16 @@
+Name: Berwyn
+State: IL
+
+Meetings:
+  - name: City Council
+    parser: xpath_css
+    matcher:
+      - xpath: //div[@about = '/?q=council_agendas']
+      - xpath: .//a[contains(text(), '(Full Packet)')]/preceding-sibling::a
+    url: https://www.berwyn-il.gov/?q=council_agendas&council
+
+  - name: Committee of the Whole
+    parser: link_with_text
+    matcher:
+      end: (COW)
+    url: https://www.berwyn-il.gov/?q=council_agendas&committee

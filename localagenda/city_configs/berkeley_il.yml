@@ -1,0 +1,13 @@
+Name: Berkeley
+State: IL
+
+Meetings:
+  - name: Board Meeting
+    parser: xpath_css
+    matcher:
+    - xpath: //td[text() = 'Board Meeting']/parent::tr
+    - xpath: (.//td[3])/a
+    url: https://www.berkeley.il.us/?SEC=97393103-BA93-406D-A9BE-77CB2DEDD700
+
+Tags:
+  - novusagenda
