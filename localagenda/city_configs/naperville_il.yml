@@ -1,0 +1,15 @@
+Name: Naperville
+State: IL
+
+Meetings:
+  - name: City Council
+    parser: xpath_css
+    cookies:
+      Setting-682-Calendar Options: info
+      Setting-682-ASP.calendar_aspx.gridCalendar.SortExpression: MeetingStartDate DESC
+      Setting-682-Calendar Year: This Year
+      Setting-682-Calendar Body: 34747
+    matcher:
+      - css: .rgAltRow, .rgRow
+      - xpath: //font[text() = 'Agenda']/parent::a[not(@class='meetingAgendaNotAvailbleLink')]
+    url: https://naperville.legistar.com/Calendar.aspx
