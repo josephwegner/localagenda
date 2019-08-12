@@ -1,5 +1,6 @@
 import scrapy
 import copy
+import re
 from urllib.parse import urljoin, urlparse, urlunparse
 
 from localagenda.items import AgendaItem
@@ -17,11 +18,26 @@ class LinkSpider(scrapy.Spider):
                         'city': city.get('Name'),
                         'meeting': meeting.get('name'),
                         'matcher': meeting.get('matcher'),
+                        'extract': meeting.get('extract'),
                         'dont_obey_robotstxt': True
                     }, callback=parser)
 
     def parse_method_not_found(self):
         print("No parse method %s found!" %(self.i))
+
+    def extract(self, node, extract):
+        if extract is None or extract == 'href':
+            return node.attrib['href']
+        else:
+            attr = list(extract.keys())[0]
+            val = node.attrib[attr]
+            finder = re.compile(extract[attr])
+            search = finder.search(val)
+
+            if search is None:
+                return None
+
+            return search.group(1)
 
     def full_url(self, response, href):
         base = response.css('base')
@@ -61,8 +77,10 @@ class LinkSpider(scrapy.Spider):
             return None
 
 
+        href = self.extract(node, response.meta.get('extract'))
+        if href is None:
+            return None
 
-        href = node.attrib['href']
         target = self.full_url(response, href)
         item = AgendaItem(content=href, target=target, city=response.meta.get('city'), meeting=response.meta.get('meeting'))
         return item
@@ -73,7 +91,10 @@ class LinkSpider(scrapy.Spider):
         if doc == None:
             return None
 
-        href = doc.attrib['href']
+        href = self.extract(doc, response.meta.get('extract'))
+        if href is None:
+            return None
+
         target = self.full_url(response, href)
         item = AgendaItem(content=href, target=target, city=response.meta.get('city'), meeting=response.meta.get('meeting'))
         return item

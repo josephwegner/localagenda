@@ -9,10 +9,6 @@ class AgendaPipeline(object):
     def process_item(self, item, spider):
         content_hash = hashlib.md5(item['content'].encode('utf-8')).hexdigest()
         meeting = Meeting.get(Meeting.name == item['meeting'], Meeting.city == item['city'])
-        print('here')
-        print(Meeting.name)
-        print(item['content'])
-        print(item['target'])
 
         send_to = []
         for sub in meeting.subscriptions:

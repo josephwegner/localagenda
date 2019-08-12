@@ -1,0 +1,24 @@
+Name: Arlington Heights
+State: IL
+
+Meetings:
+  - name: Committee of the Whole
+    parser: xpath_css
+    matcher:
+      - xpath: //div[contains(text(), 'Committee-of-the-Whole')]/parent::td/parent::tr
+      - xpath: .//img[@alt = 'View Agenda HTML']/parent::a
+    extract:
+      onclick: window\.open\('([^']+)
+    url: https://arlingtonheights.novusagenda.com/agendapublic/Meetingsresponsive.aspx?committee
+
+  - name: Village Board
+    parser: xpath_css
+    matcher:
+      - xpath: //div[contains(text(), 'Village Board')]/parent::td/parent::tr
+      - xpath: .//img[@alt = 'View Agenda HTML']/parent::a
+    extract:
+      onclick: window\.open\('([^']+)
+    url: https://arlingtonheights.novusagenda.com/agendapublic/Meetingsresponsive.aspx?board
+
+Tags:
+  - novusagenda
