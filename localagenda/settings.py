@@ -16,7 +16,7 @@ NEWSPIDER_MODULE = 'localagenda.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'localagenda (+http://www.yourdomain.com)'
+USER_AGENT = 'localagenda (+https://localagenda.herokuapp.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
