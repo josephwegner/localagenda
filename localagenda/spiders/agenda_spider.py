@@ -1,6 +1,6 @@
 import scrapy
 import copy
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse, urlunparse
 
 from localagenda.items import AgendaItem
 from localagenda.cities import cities
@@ -21,6 +21,21 @@ class LinkSpider(scrapy.Spider):
     def parse_method_not_found(self):
         print("No parse method %s found!" %(self.i))
 
+    def full_url(self, response, href):
+        base = response.css('base')
+        if len(base) > 0:
+            url = urljoin(base[0].attrib['href'], href)
+        else:
+            url = urljoin(response.url, href)
+
+        parts = urlparse(url)
+        if parts.scheme == '':
+            lst = list(parts)
+            lst[0] = 'https'
+            parts = tuple(lst)
+
+        return urlunparse(parts)
+
     def link_with_text_parser(self, response):
         xpath = "//a[starts-with(text(), '%s')]" %(response.meta.get('matcher'))
         node = response.xpath(xpath)
@@ -28,7 +43,7 @@ class LinkSpider(scrapy.Spider):
             return None
 
         href = node.attrib['href']
-        target = urljoin(response.url, href)
+        target = self.full_url(response, href)
         item = AgendaItem(content=href, target=target, city=response.meta.get('city'), meeting=response.meta.get('meeting'))
         return item
 
@@ -39,7 +54,7 @@ class LinkSpider(scrapy.Spider):
             return None
 
         href = doc.attrib['href']
-        target = urljoin(response.url, href)
+        target = self.full_url(response, href)
         item = AgendaItem(content=href, target=target, city=response.meta.get('city'), meeting=response.meta.get('meeting'))
         return item
 

@@ -1,0 +1,10 @@
+Name: Hinsdale
+State: IL
+
+Meetings:
+  - name: Board of Trustees
+    parser: xpath_css
+    matcher:
+      - css: table
+      - xpath: //a[text() = 'Agenda']
+    url: https://www.villageofhinsdale.org/government/committees_and_commissions/board_of_trustees.php
