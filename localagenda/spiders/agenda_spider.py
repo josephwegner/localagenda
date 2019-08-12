@@ -10,7 +10,7 @@ class LinkSpider(scrapy.Spider):
 
     def start_requests(self):
         for city in cities:
-            if 'Meetings' in city:
+            if 'Meetings' in city and (not hasattr(self, 'city') or city.get('Name') == self.city):
                 for meeting in city.get('Meetings'):
                     parser = getattr(self, "%s_parser" %(meeting.get('parser')), self.parse_method_not_found)
                     yield scrapy.Request(meeting.get('url'), cookies=meeting.get('cookies'), meta={
