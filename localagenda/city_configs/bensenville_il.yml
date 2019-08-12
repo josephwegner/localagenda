@@ -1,0 +1,13 @@
+Name: Bensenville
+State: IL
+
+Meetings:
+  - name: Board of Trustees
+    parser: xpath_css
+    matcher:
+    - xpath: //td[text() = 'Board of Trustees']/parent::tr
+    - xpath: .//img[@alt = 'Agenda PDF']/parent::a
+    url: https://bensenville.novusagenda.com/AgendaPublic/
+
+Tags:
+  - novusagenda

@@ -1,0 +1,13 @@
+Name: Addison
+State: IL
+
+Meetings:
+  - name: Village Board
+    parser: xpath_css
+    matcher:
+      - css: "#board"
+      - xpath: .//a[text() = 'Agenda']
+    url: http://addison.granicus.com/ViewPublisher.php?view_id=2
+
+Tags:
+  - granicus

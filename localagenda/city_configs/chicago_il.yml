@@ -16,3 +16,6 @@ Meetings:
       - css: .rgAltRow, .rgRow
       - xpath: //font[text() = 'Agenda']/parent::a[not(@class='meetingAgendaNotAvailbleLink')]
     url: https://chicago.legistar.com/Calendar.aspx?M=Calendar&ID=7728494&GUID=4457ec0e-2d66-4797-b1e4-4602108900a0
+
+Tags:
+  - legistar

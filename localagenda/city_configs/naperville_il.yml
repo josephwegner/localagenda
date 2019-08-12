@@ -13,3 +13,6 @@ Meetings:
       - css: .rgAltRow, .rgRow
       - xpath: //font[text() = 'Agenda']/parent::a[not(@class='meetingAgendaNotAvailbleLink')]
     url: https://naperville.legistar.com/Calendar.aspx
+
+Tags:
+  - legistar
