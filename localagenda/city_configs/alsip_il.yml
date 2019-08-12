@@ -1,0 +1,17 @@
+Name: Alsip
+State: IL
+
+Meetings:
+  - name: Board of Trustees
+    parser: link_with_text
+    matcher:
+      end: Board Meeting Agenda.pdf
+      not: Special
+    url: http://villageofalsip.org/Recent%20Meeting%20Agendas/?board
+
+  - name: Village Committee
+    parser: link_with_text
+    matcher:
+      end: Committee Meeting Agenda.pdf
+      not: Special
+    url: http://villageofalsip.org/Recent%20Meeting%20Agendas/?committee

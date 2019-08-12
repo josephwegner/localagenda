@@ -4,5 +4,6 @@ State: IL
 Meetings:
   - name: Village Council
     parser: link_with_text
-    matcher: Council Agenda
+    matcher:
+      beginning: Council Agenda
     url: http://www.downers.us/agendas/current

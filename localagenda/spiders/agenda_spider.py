@@ -39,10 +39,28 @@ class LinkSpider(scrapy.Spider):
         return urlunparse(parts)
 
     def link_with_text_parser(self, response):
-        xpath = "//a[starts-with(text(), '%s')]" %(response.meta.get('matcher'))
+        matcher = response.meta.get('matcher')
+
+        if isinstance(matcher, str):
+            xpath = "//a[contains(text(), '%s')]" %(matcher)
+        else:
+            if 'beginning' in matcher:
+                xpath = "//a[starts-with(text(), '%s')]" %(matcher['beginning'])
+            elif 'end' in matcher:
+                xpath = "//a[substring(text(), string-length(text()) - string-length('%s') +1) = '%s']" %(matcher['end'], matcher['end'])
+            else:
+                return None
+
         node = response.xpath(xpath)
+        if isinstance(matcher, dict) and 'not' in matcher:
+            for anchor in node:
+                if matcher['not'] in node.xpath("./text()").get():
+                    node.remove(anchor)
+
         if len(node) == 0:
             return None
+
+
 
         href = node.attrib['href']
         target = self.full_url(response, href)
