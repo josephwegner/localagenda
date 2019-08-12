@@ -10,13 +10,15 @@ class LinkSpider(scrapy.Spider):
 
     def start_requests(self):
         for city in cities:
-            for meeting in city.get('Meetings'):
-                parser = getattr(self, "%s_parser" %(meeting.get('parser')), self.parse_method_not_found)
-                yield scrapy.Request(meeting.get('url'), cookies=meeting.get('cookies'), meta={
-                    'city': city.get('Name'),
-                    'meeting': meeting.get('name'),
-                    'matcher': meeting.get('matcher')
-                }, callback=parser)
+            if 'Meetings' in city:
+                for meeting in city.get('Meetings'):
+                    parser = getattr(self, "%s_parser" %(meeting.get('parser')), self.parse_method_not_found)
+                    yield scrapy.Request(meeting.get('url'), cookies=meeting.get('cookies'), meta={
+                        'city': city.get('Name'),
+                        'meeting': meeting.get('name'),
+                        'matcher': meeting.get('matcher'),
+                        'dont_obey_robotstxt': True
+                    }, callback=parser)
 
     def parse_method_not_found(self):
         print("No parse method %s found!" %(self.i))
@@ -69,7 +71,6 @@ class LinkSpider(scrapy.Spider):
             returned_document = doc.xpath(step['xpath'])
         else:
             returned_document = doc.css(step['css'])
-
 
         if len(returned_document) == 0:
             return None

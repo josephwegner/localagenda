@@ -17,11 +17,12 @@ def add_new_meetings():
         added_cities[row['city']].append(row['name'])
 
     for city in cities:
-        for meeting in city['Meetings']:
-            if city['Name'] not in added_cities or meeting['name'] not in added_cities[city['Name']]:
-                print("Adding %s meeting %s" %(city['Name'], meeting['name']))
-                m = Meeting.create(city=city['Name'], name=meeting['name'])
-                m.save()
+        if 'Meetings' in city:
+            for meeting in city['Meetings']:
+                if city['Name'] not in added_cities or meeting['name'] not in added_cities[city['Name']]:
+                    print("Adding %s meeting %s" %(city['Name'], meeting['name']))
+                    m = Meeting.create(city=city['Name'], name=meeting['name'])
+                    m.save()
 
 def migrate():
     migrator = PostgresqlMigrator(database)
