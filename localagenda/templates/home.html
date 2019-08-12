@@ -37,7 +37,7 @@
           {
             name: "{{ city.Name }}",
             state: "{{ city.State }}",
-            meetings: JSON.parse('{{ city.Meetings | tojson | replace('\\', '\\\\')}}')
+            meetings: JSON.parse('{{ city.Meetings|default({})|tojson|replace('\\', '\\\\')}}')
           },
         {% endfor %}
         ]

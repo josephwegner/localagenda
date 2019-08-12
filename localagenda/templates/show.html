@@ -8,7 +8,11 @@
     <div class="main">
       <div>
         <h1 class="big-text alone">{{ city.Name }} politics are important.</h1>
-        {% if len(city['Meetings']) == 1 %}
+        {% if city['Subscribe'] %}
+          <h2>{{ city.Name }} can alert you whenever there are new agendas available.</h2>
+          <a href="{{city['Subscribe']}}" class="external-button">Sign Up</a>
+          <p>This will take you to an external website.</p>
+        {% elif len(city['Meetings']) == 1 %}
           <h3 class="signup-desc">Enter your email below to get the {{ city['Meetings'][0]['name'] }} agenda</h3>
           <div class="city-input-wrapper">
             <form action="/signup" method="POST">

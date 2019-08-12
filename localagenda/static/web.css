@@ -122,6 +122,25 @@ form {
   background-color: #3C3B6E;
 }
 
+.external-button,
+.external-button:visited {
+  background-color: #3C3B6E;
+  font-size: 1rem;
+  border: 1px solid white;
+  border-radius: 1rem;
+  color: white;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  font-weight: 700;
+  margin: 1rem 0 0 0;
+  display: inline-block;
+  transition: background-color .125s;
+}
+
+.external-button:hover {
+  background-color: #32316E;
+}
+
 /** Privacy **/
 .privacy h1,
 .privacy h2,
