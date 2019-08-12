@@ -19,8 +19,7 @@ def about():
 
 @application.route('/cities')
 def list_cities():
-    active_cities = filter(lambda c: c.Subscribe, cities)
-    return render_template('cities.html', cities=active_cities)
+    return render_template('cities.html', cities=cities)
 
 @application.route('/privacy')
 def privacy():

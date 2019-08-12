@@ -8,7 +8,9 @@
     <div class="cities">
       <ul>
         {% for city in cities %}
-          <li><a href="/c/{{ city['slug'] }}">{{ city['Name'] }}, {{ city['State'] }}</a></li>
+          {% if not city.Subscribe %}
+            <li><a href="/c/{{ city['slug'] }}">{{ city['Name'] }}, {{ city['State'] }}</a></li>
+          {% endif %}
         {% endfor %}
       </ul>
       <div class="footer fixed">
