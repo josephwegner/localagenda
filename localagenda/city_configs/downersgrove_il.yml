@@ -5,5 +5,5 @@ Meetings:
   - name: Village Council
     parser: link_with_text
     matcher:
-      beginning: Council Agenda
+      start: Council Agenda
     url: http://www.downers.us/agendas/current

@@ -1,0 +1,17 @@
+Name: Bellwood
+State: IL
+
+Meetings:
+  - name: Committee of the Whole
+    parser: link_with_text
+    matcher:
+      start: Committee of the Whole Meeting
+      not: Special
+    url: https://www.vil.bellwood.il.us/government/village-board-agendas/?committee
+
+  - name: Village Board
+    parser: link_with_text
+    matcher:
+      start: Village Board Agenda
+      not: Agendas
+    url: https://www.vil.bellwood.il.us/government/village-board-agendas/?board

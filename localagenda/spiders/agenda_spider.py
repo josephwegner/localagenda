@@ -60,8 +60,8 @@ class LinkSpider(scrapy.Spider):
         if isinstance(matcher, str):
             xpath = "//a[contains(text(), '%s')]" %(matcher)
         else:
-            if 'beginning' in matcher:
-                xpath = "//a[starts-with(text(), '%s')]" %(matcher['beginning'])
+            if 'start' in matcher:
+                xpath = "//a[starts-with(text(), '%s')]" %(matcher['start'])
             elif 'end' in matcher:
                 xpath = "//a[substring(text(), string-length(text()) - string-length('%s') +1) = '%s']" %(matcher['end'], matcher['end'])
             else:
