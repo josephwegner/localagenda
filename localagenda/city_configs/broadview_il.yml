@@ -1,0 +1,9 @@
+Name: Broadview
+State: IL
+
+Meetings:
+  - name: Village Board
+    parser: link_with_text
+    matcher:
+      end: Agenda
+    url: https://broadview-il.gov/documents/
