@@ -1,0 +1,9 @@
+Name: Bridgeview
+State: IL
+
+Meetings:
+  - name: Village Board
+    parser: link_with_text
+    matcher:
+      end: Agenda
+    url: https://www.bridgeview-il.gov/agendas_minutes/default.aspx?CategoryId=2&Year=2019
